@@ -1,0 +1,61 @@
+
+#include <allegro.h>
+#define MAXFILAS  20    //para el eje y
+                        
+#define MAXCOLS   31    //para el eje x
+BITMAP *buffer;
+BITMAP *roca;
+
+char mapa[MAXFILAS][MAXCOLS] = {
+"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+"x            xxxxx           x",
+"x xxx xxxxx xxxxx xxxxx xxx  x",
+"x xxx xxxxx xxxxx xxxxx xxx  x",
+"x                            x",
+"x xxx xx xxxxxxxxxxx xx xxx  x",
+"x     xx     xxx     xx      x",
+"x xxx xxxxxx xxx xxxxxx xxx  x",
+"x xxx xx             xx xxx  x",
+"      xx xxxxxxxxxxx xx       ",
+"x xxx xx xxxxxxxxxxx xx xxx  x",
+"x xxx xx             xx xxx  x",
+"x xxx xxxxxx xxx xxxxxx xxx  x",
+"x     xx     xxx     xx      x",
+"x xxx xx xxxxxxxxxxx xx xxx  x",
+"x xxx                   xxx  x",
+"x xxx xxxx xxxxxxxx xxx xxx  x",
+"x xxx xxxx          xxx xxx  x",
+"x          xxxxxxxx          x",
+"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+
+};
+void dibujar_mapa(){
+       int row, col;
+        for(row = 0 ; row< MAXFILAS ;  row++ ){
+             for(col = 0; col< MAXCOLS; col++){
+                if(mapa[row][col] = 'x'){
+                   draw_sprite(buffer, roca , col*30 ,row*30);
+                   }
+            }
+       }
+  }
+void pantalla(){
+	blit(buffer, screen , 0, 0, 0, 0, 880, 600);
+}
+
+int main();{
+allegro_init();
+install_keyboard();
+
+set_color_depth(32);
+set_gfx_node(GFX_AUTODETCT_WENDOWED, 880, 600, 0, 0);
+buffer = create_bitmap(880, 600);
+roca = load_bitmap("roca.bmp, NULL");
+
+while(!key[KEY-SCP]){
+
+dibujar_mapa();
+pantalla();
+}
+}
+END_OF_MAIN();
